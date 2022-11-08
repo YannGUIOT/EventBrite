@@ -1,9 +1,53 @@
-<h1>New event</h1>
+<html>
+  <body>
+  <div class="container "><br>
+    <h2>Create a new event</h2><br>
+    <%=form_for @event do |f|%>
 
-<%= render "form", event: @event %>
+      <form>
+        <div class="form-group">
+          <b><%= f.label :title%></b>
+          <%= f.text_field :title, class: "form-control", placeholder:"enter a title for your event"%>
+          <small class="form-text text-muted">between 5 to 140 caracters</small>
+        </div>
+        <div class="form-group">
+          <b><%= f.label :description%></b>
+          <%= f.text_area :description, rows:"3", class: "form-control", placeholder:"enter a description"%>
+        </div>
 
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <b><%= f.label :location%></b>
+            <%= f.text_field :location, class: "form-control", placeholder:"insert the location of your event"%>
+          </div>
+          <div class="form-group col-md-6">
+            <b><%= f.label :start_date%></b>
+            <%= f.datetime_field :start_date, autocomplete: "YYYY-MM-DD HH:MM:SS", class: "form-control", placeholder:"YYYY-MM-DD HH:MM:SS"%>
+            <small class="form-text text-muted">cannot be in the past</small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <b><%= f.label :price%></b>
+            <%= f.text_field :price, class: "form-control", placeholder:"price in dollar"%>
+          </div>
+          <div class="form-group col-md-6">
+            <b><%= f.label :duration%></b>
+            <%= f.datetime_field :duration, class: "form-control", placeholder:"in minutes"%>
+            <small class="form-text text-muted">must be a multiple of 5</small>
+          </div>
+        </div><br>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-outline-primary">Create the event</button>
+        </div>
+      </form>
+
+    <% end %>
+    </div>
+  </body>
+</html>
 <br>
-
-<div>
+<div class="form-group text-center">
   <%= link_to "Back to events", events_path %>
 </div>

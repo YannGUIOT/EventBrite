@@ -1,14 +1,23 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Events</h1>
-
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
-  <% end %>
+<div class="container">
+  <div class="text-center">
+  <h2> All events around!</h2><br>
+  </div><br>
+  <div class="row mb-3 col">
+    <% @events.each do |event| %>
+      <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-header text-center">
+          <h5 class="card-title"> <b><%= event.title%></b></h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Start:</b><%=event.start_date%></li>
+            <li class="list-group-item"><b>Location:</b> <%=event.location%></li>
+            <li class="list-group-item"><b>Price:</b> <%=event.price %> $</li>
+            <li class="list-group-item text-center"><%=link_to "More about this event", event_path(event.id), :class => "btn btn-secondary"%></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New event", new_event_path %>

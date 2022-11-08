@@ -13,6 +13,30 @@
   </head>
 
   <body>
+
+<div class="jumbotron jumbotron-fluid text-center" style="background-image: url(https://t4.ftcdn.net/jpg/01/23/51/95/360_F_123519552_gDaDSH1b3dn7hMqnAE4hF7kpuStrgXLD.jpg)">
+  <div class="container">
+      <div>
+        <% if user_signed_in? %>
+          <h4> Welcome : &nbsp<%= current_user.first_name %>&nbsp<%= current_user.last_name %> &nbsp</h4>
+          <%= link_to "Create a new event!", new_event_path, class: "btn btn-outline-dark btn-lg"%>
+          <%= link_to "Mon Profil", user_path(current_user), class: "btn btn-outline-dark btn-lg" %>
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-outline-dark btn-lg" %>
+        <% else %>
+          <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-dark btn-lg" %></li>
+          <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-outline-dark btn-lg" %></li>
+        <% end %>
+      </div>
+      <div>
+          <h1 class="display-1"><strong>EVENT-BRITE</strong></h1>
+      </div>
+  </div>
+</div>
     <%= yield %>
+
+    <%# <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> %>
+
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
