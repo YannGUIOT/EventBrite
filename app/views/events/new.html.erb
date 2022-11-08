@@ -1,41 +1,11 @@
-<div class="edit-user d-flex justify-content-center align-items-center">
-  <div class="card">
-    <div class="card-header">
-      Créer un événement
-    </div>
-    <div class="card-body">
-      <%= form_for(:event, url: events_path, html: { method: :post }) do |f| %>
-        <div class="form-floating">
-          <%= f.text_field :title, class: 'form-control m-2 ms-0' %>
-          <%= f.label :title, 'Titre' %>
-        </div>
-        <div class="form-floating">
-          <%= f.text_area :description, class: 'form-control m-2 ms-0' %>
-          <%= f.label :description, 'Description' %>
-        </div>
-        <div class="datetime-form">
-          <%= f.label :start_date, "Début de l'événement" %><br/>
-          <%= f.datetime_select :start_date, { ampm: false, order: [:day, :month, :year, :hour, :minute] } %>
-        </div>
-        <div class="form-floating">
-          <%= f.text_field :duration, class: 'form-control m-2 ms-0' %>
-          <%= f.label :duration, "Durée de l'événement" %>
-        </div>
+<div class="text-center">
+  <h1>New event</h1>
 
-        <div class="form-floating">
-          <%= f.text_field :location, class: 'form-control m-2 ms-0' %>
-          <%= f.label :location, "Localisation" %>
-        </div>
-        <div class="form-floating">
-          <%= f.text_field :price, class: 'form-control m-2 ms-0' %>
-          <%= f.label :price, "Prix de l'événement" %>
-        </div>
-        <%= f.submit "Créer l'évenement", class: 'btn btn-primary m-3 ms-0' %>
-      <% end %>
-    </div>
+  <%= render "form", event: @event %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to events", events_path %>
   </div>
-</div>
-<br>
-<div class="form-group text-center">
-  <%= link_to "Back to events", events_path %>
 </div>
