@@ -1,14 +1,26 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<%= link_to "New user", new_user_path, :class => "btn btn-success" %>
+<%= link_to "Home", :root, :class => "btn btn-info" %>
+
+<div class="container">
+  <div class="text-center">
+  <h2> All Users</h2><br>
+  </div><br>
+  <div class="row mb-3 col">
+    <% @users.each do |user| %>
+      <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>First name: </b><%=user.first_name%></li>
+            <li class="list-group-item"><b>Last name:</b> <%=user.last_name%></li>
+            <li class="list-group-item"><b>Email:</b> <%=user.email %></li>
+            <li class="list-group-item"><b>Encrypted Password:</b> <%=user.encrypted_password %></li>
+            <li class="list-group-item"><b>Description:</b> <%=user.description %></li>
+            <li class="list-group-item text-center"><%= link_to "Show this user", user, :class => "btn btn-secondary"%></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New user", new_user_path %>
